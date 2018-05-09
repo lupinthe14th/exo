@@ -1,0 +1,5 @@
+---
+endpoint: 'https://mail.domain.com/ews/exchange.asmx'
+username: 'iij-taro@iij.ad.jp'
+password: 'topsecret'
+verify_ssl: true
