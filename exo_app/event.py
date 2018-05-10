@@ -18,25 +18,25 @@ class Event(object):
     def __init__(self):
         pass
 
-    def show(self, start, end):
-        _start = tz.localize(EWSDateTime(
-            int(start.strftime('%Y')),
-            int(start.strftime('%m')),
-            int(start.strftime('%d')) + 1,
+    def show(self, start_lt, end_gt):
+        _start_lt = tz.localize(EWSDateTime(
+            int(start_lt.strftime('%Y')),
+            int(start_lt.strftime('%m')),
+            int(start_lt.strftime('%d')),
         ))
-        _end = tz.localize(EWSDateTime(
-            int(end.strftime('%Y')),
-            int(end.strftime('%m')),
-            int(end.strftime('%d')),
+        _end_gt = tz.localize(EWSDateTime(
+            int(end_gt.strftime('%Y')),
+            int(end_gt.strftime('%m')),
+            int(end_gt.strftime('%d')),
         ))
-        log.debug('start: {}'.format(_start))
-        log.debug('end: {}'.format(_end))
+        log.debug('start_lt: {}'.format(_start_lt))
+        log.debug('end_gt: {}'.format(_end_gt))
         items = account.calendar.filter(
-            start__lt=_start,
-            end__gt=_end,
+            start__lt=_start_lt,
+            end__gt=_end_gt,
         )
 
-        print("{}".format(start.strftime('%Y-%m-%d')))
+        print("{}".format(end_gt.strftime('%Y-%m-%d')))
         for item in items:
             print("- {0}\t{1} - {2}".format(
                 item.subject,
