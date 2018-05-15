@@ -31,9 +31,9 @@ class Event(object):
         ))
         log.debug('start_lt: {}'.format(_start_lt))
         log.debug('end_gt: {}'.format(_end_gt))
-        items = account.calendar.filter(
-            start__lt=_start_lt,
-            end__gt=_end_gt,
+        items = account.calendar.view(
+            start=_end_gt,
+            end=_start_lt,
         )
 
         print("{}".format(end_gt.strftime('%Y-%m-%d')))
