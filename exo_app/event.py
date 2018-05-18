@@ -18,17 +18,18 @@ class Event(object):
     def __init__(self):
         pass
 
+    def _localdate(self, date):
+        _ld = tz.localize(EWSDateTime(
+            int(date.strftime('%Y')),
+            int(date.strftime('%m')),
+            int(date.strftime('%d')),
+        ))
+        log.debug('_ld: {}'.format(_ld))
+        return _ld
+
     def show(self, start, end):
-        _start = tz.localize(EWSDateTime(
-            int(start.strftime('%Y')),
-            int(start.strftime('%m')),
-            int(start.strftime('%d')),
-        ))
-        _end = tz.localize(EWSDateTime(
-            int(end.strftime('%Y')),
-            int(end.strftime('%m')),
-            int(end.strftime('%d')),
-        ))
+        _start = self._localdate(start)
+        _end = self._localdate(end)
         log.debug('start: {}'.format(_start))
         log.debug('end: {}'.format(_end))
         items = account.calendar.view(
