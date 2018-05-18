@@ -3,43 +3,13 @@
 
 from __future__ import unicode_literals
 
-from argparse import ArgumentParser, ArgumentTypeError
+from argparse import ArgumentParser
 from logging import DEBUG, INFO, basicConfig, getLogger
 
 from exchangelib.util import PrettyXmlHandler
 
-import japandas as jpd
-import pandas as pd
-import pandas.tseries.offsets as offsets
-
-from exo_app.event import Event
-
-
-def _next_bday():
-    """Return next business day."""
-    calendar = jpd.JapaneseHolidayCalendar()
-    cday = pd.offsets.CDay(calendar=calendar)
-    return (pd.to_datetime('today') + cday)
-
-
-def valid_date(s):
-    try:
-        return pd.datetime.strptime(s, "%Y-%m-%d")
-    except ValueError:
-        msg = "Not a valid date: '{0}'.".format(s)
-        raise ArgumentTypeError(msg)
-
-
-def main(date):
-    eev = Event()
-    if date:
-        _date = pd.to_datetime(date)
-    else:
-        _date = _next_bday()
-
-    log.debug("_date: {}".format(_date))
-    eev.show(start=_date, end=_date + offsets.Day(),)
-
+from exo_app.core import main
+from exo_app.utils import valid_date
 
 if __name__ == "__main__":
     log = getLogger(__name__)
