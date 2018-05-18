@@ -7,7 +7,7 @@ from __future__ import unicode_literals
 from exchangelib import EWSDateTime
 from logging import getLogger
 
-from . import account, tz
+from exo_app import account, tz
 
 log = getLogger(__name__)
 
