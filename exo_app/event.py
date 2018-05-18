@@ -36,7 +36,7 @@ class Event(object):
             end=_start_lt,
         )
 
-        print("{}".format(end_gt.strftime('%Y-%m-%d')))
+        print("{}".format(end_gt.strftime('%a., %d %b., %Y')))
         for item in items:
             print("- {0}\t{1} - {2}".format(
                 item.subject,
