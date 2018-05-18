@@ -38,7 +38,7 @@ def main(date):
         _date = _next_bday()
 
     log.debug("_date: {}".format(_date))
-    eev.show(start_lt=_date + offsets.Day(), end_gt=_date,)
+    eev.show(start=_date, end=_date + offsets.Day(),)
 
 
 if __name__ == "__main__":
