@@ -17,6 +17,9 @@ pipeline:
             - flake8 .
             - pyflakes .
             - nosetests --with-coverage -v test/
+        when:
+            branch: [develop, feature/*, test]
+
 
     rebuild-cache:
         image: plugins/s3-cache:1
@@ -36,6 +39,16 @@ pipeline:
         secret_key: DRONEDRONE
         flush: true
         flush_age: 14
+
+notify:
+    irc:
+        prefix: build
+        nick: drone
+        channel: 'ewk8s'
+        enable_tls: true
+        server:
+            host: irc.iiji.jp
+            port: 6667
 
 matrix:
     PYTHON_VERSION:
