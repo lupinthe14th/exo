@@ -1,0 +1,59 @@
+---
+pipeline:
+    restore-cache:
+        image: plugins/s3-cache:1
+        pull: true
+        endpoint: http://docker-node.tokyo.iiji.jp:9000
+        access_key: DRONE
+        secret_key: DRONEDRONE
+        restore: true
+
+    build:
+        image: python:${PYTHON_VERSION}
+        commands:
+            - pip install --upgrade pip setuptools wheel
+            - pip wheel -r requirement/dev.txt --wheel-dir=wheeldir --find-links=wheeldir
+            - pip install --no-index --find-links=wheeldir -r requirement/dev.txt
+            - flake8 .
+            - pyflakes .
+            - nosetests --with-coverage -v test/
+        when:
+            branch: [master, test]
+
+
+    rebuild-cache:
+        image: plugins/s3-cache:1
+        pull: true
+        endpoint: http://docker-node.tokyo.iiji.jp:9000
+        access_key: DRONE
+        secret_key: DRONEDRONE
+        rebuild: true
+        mount:
+            - wheeldir
+
+    flush_cache:
+        image: plugins/s3-cache:1
+        pull: true
+        endpoint: http://docker-node.tokyo.iiji.jp:9000
+        access_key: DRONE
+        secret_key: DRONEDRONE
+        flush: true
+        flush_age: 14
+
+notify:
+    irc:
+        prefix: build
+        nick: drone
+        channel: 'ewk8s'
+        enable_tls: true
+        server:
+            host: irc.iiji.jp
+            port: 6667
+        when:
+            branch: master
+            status: success
+
+matrix:
+    PYTHON_VERSION:
+        - latest
+        - "3.6.5"

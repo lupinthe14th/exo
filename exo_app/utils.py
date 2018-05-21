@@ -19,8 +19,8 @@ def next_bday():
 def valid_date(s):
     try:
         return pd.datetime.strptime(s, "%Y-%m-%d")
-    except ValueError:
-        msg = "Not a valid date: '{0}'.".format(s)
+    except ValueError as e:
+        msg = "Not a valid date: '{0}'\ndetails: {1}.".format(s, e)
         raise ArgumentTypeError(msg)
 
 # vim: set fileencoding=utf-8 :
