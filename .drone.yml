@@ -40,6 +40,7 @@ pipeline:
         flush: true
         flush_age: 14
 
+notify:
     irc:
         prefix: build
         nick: drone
@@ -51,7 +52,6 @@ pipeline:
         when:
             branch: master
             status: success
-
 
 matrix:
     PYTHON_VERSION:
