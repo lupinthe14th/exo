@@ -18,7 +18,7 @@ pipeline:
             - pyflakes .
             - nosetests --with-coverage -v test/
         when:
-            branch: [develop, feature/*, test]
+            branch: master
 
 
     rebuild-cache:
@@ -40,7 +40,6 @@ pipeline:
         flush: true
         flush_age: 14
 
-notify:
     irc:
         prefix: build
         nick: drone
@@ -49,6 +48,10 @@ notify:
         server:
             host: irc.iiji.jp
             port: 6667
+        when:
+            branch: master
+            status: success
+
 
 matrix:
     PYTHON_VERSION:
