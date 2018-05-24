@@ -42,16 +42,14 @@ pipeline:
         flush: true
         flush_age: 14
 
-    notify:
-        irc:
-            image: plugins/irc
-            prefix: build
-            nick: drone
-            channel: aps-mail
-            server:
-                host: irc.iiji.jp
-                port: 6667
-#            tls: true
+notify:
+    irc:
+        prefix: build
+        nick: drone
+        channel: aps-mail
+        host: irc.iiji.jp
+        port: 6667
+        enable_tls: true
 #        when:
 #            status: success
 
