@@ -44,11 +44,11 @@ notify:
     irc:
         prefix: build
         nick: drone
-        channel: 'ewk8s'
-        enable_tls: true
+        channel: aps-mail
         server:
             host: irc.iiji.jp
             port: 6667
+            tls: true
         when:
             branch: master
             status: success
