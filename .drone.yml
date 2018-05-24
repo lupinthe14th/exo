@@ -50,6 +50,7 @@ notify:
         host: irc.iiji.jp
         port: 6667
         enable_tls: true
+        debug: true
 #        when:
 #            status: success
 
