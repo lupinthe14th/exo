@@ -10,9 +10,8 @@ pipeline:
         mount:
             - wheeldir
 
-    build:
-        # image: python:${PYTHON_VERSION}
-        image: python:3.6.5
+    test:
+        image: python:${PYTHON_VERSION}
         commands:
             - pip install --upgrade pip setuptools wheel
             - pip wheel -r requirement/dev.txt --wheel-dir=wheeldir --find-links=wheeldir
@@ -20,9 +19,6 @@ pipeline:
             - flake8 .
             - pyflakes .
             - nosetests --with-coverage -v test/
-        when:
-            branch: [master, test]
-
 
     rebuild-cache:
         image: plugins/s3-cache:1
@@ -43,19 +39,7 @@ pipeline:
         flush: true
         flush_age: 14
 
-notify:
-    irc:
-        prefix: build
-        nick: drone
-        channel: aps-mail
-        host: irc.iiji.jp
-        port: 6667
-        enable_tls: true
-        debug: true
-#        when:
-#            status: success
-
-# matrix:
-#     PYTHON_VERSION:
-#         - latest
-#         - "3.6.5"
+matrix:
+    PYTHON_VERSION:
+        - latest
+        - "3.6.5"
