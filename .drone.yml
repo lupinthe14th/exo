@@ -1,14 +1,14 @@
 ---
 pipeline:
-    restore-cache:
-        image: plugins/s3-cache:1
-        pull: true
-        endpoint: http://docker-node.tokyo.iiji.jp:9000
-        access_key: DRONE
-        secret_key: DRONEDRONE
-        restore: true
-        mount:
-            - wheeldir
+#    restore-cache:
+#        image: plugins/s3-cache:1
+#        pull: true
+#        endpoint: http://docker-node.tokyo.iiji.jp:9000
+#        access_key: DRONE
+#        secret_key: DRONEDRONE
+#        restore: true
+#        mount:
+#            - wheeldir
 
     build:
         image: python:${PYTHON_VERSION}
@@ -23,24 +23,24 @@ pipeline:
             branch: [master, test]
 
 
-    rebuild-cache:
-        image: plugins/s3-cache:1
-        pull: true
-        endpoint: http://docker-node.tokyo.iiji.jp:9000
-        access_key: DRONE
-        secret_key: DRONEDRONE
-        rebuild: true
-        mount:
-            - wheeldir
-
-    flush_cache:
-        image: plugins/s3-cache:1
-        pull: true
-        endpoint: http://docker-node.tokyo.iiji.jp:9000
-        access_key: DRONE
-        secret_key: DRONEDRONE
-        flush: true
-        flush_age: 14
+#    rebuild-cache:
+#        image: plugins/s3-cache:1
+#        pull: true
+#        endpoint: http://docker-node.tokyo.iiji.jp:9000
+#        access_key: DRONE
+#        secret_key: DRONEDRONE
+#        rebuild: true
+#        mount:
+#            - wheeldir
+#
+#    flush_cache:
+#        image: plugins/s3-cache:1
+#        pull: true
+#        endpoint: http://docker-node.tokyo.iiji.jp:9000
+#        access_key: DRONE
+#        secret_key: DRONEDRONE
+#        flush: true
+#        flush_age: 14
 
 notify:
     irc:
@@ -50,9 +50,9 @@ notify:
         server:
             host: irc.iiji.jp
             port: 6667
-            tls: true
-        when:
-            status: success
+#            tls: true
+#        when:
+#            status: success
 
 matrix:
     PYTHON_VERSION:
