@@ -7,6 +7,8 @@ pipeline:
         access_key: DRONE
         secret_key: DRONEDRONE
         restore: true
+        mount:
+            - wheeldir
 
     build:
         image: python:${PYTHON_VERSION}
@@ -50,7 +52,6 @@ notify:
             port: 6667
             tls: true
         when:
-            branch: master
             status: success
 
 matrix:
