@@ -5,15 +5,19 @@ from __future__ import unicode_literals
 
 from argparse import ArgumentTypeError
 
+import datetime as dt
 import japandas as jpd
 import pandas as pd
 
 
-def next_bday():
-    """Return next business day."""
+def next_bday(day=None):
+    """Returns the next business day after argument day.
+    """
+    if day is None:
+        day = dt.date.today()
     calendar = jpd.JapaneseHolidayCalendar()
     cday = pd.offsets.CDay(calendar=calendar)
-    return (pd.to_datetime('today') + cday)
+    return (pd.to_datetime(day) + cday)
 
 
 def valid_date(s):

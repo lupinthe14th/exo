@@ -7,8 +7,10 @@ pipeline:
         access_key: DRONE
         secret_key: DRONEDRONE
         restore: true
+        mount:
+            - wheeldir
 
-    build:
+    test:
         image: python:${PYTHON_VERSION}
         commands:
             - pip install --upgrade pip setuptools wheel
@@ -17,9 +19,6 @@ pipeline:
             - flake8 .
             - pyflakes .
             - nosetests --with-coverage -v test/
-        when:
-            branch: [master, test]
-
 
     rebuild-cache:
         image: plugins/s3-cache:1
@@ -39,19 +38,6 @@ pipeline:
         secret_key: DRONEDRONE
         flush: true
         flush_age: 14
-
-notify:
-    irc:
-        prefix: build
-        nick: drone
-        channel: aps-mail
-        server:
-            host: irc.iiji.jp
-            port: 6667
-            tls: true
-        when:
-            branch: master
-            status: success
 
 matrix:
     PYTHON_VERSION:
