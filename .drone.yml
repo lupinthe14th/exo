@@ -11,7 +11,8 @@ pipeline:
             - wheeldir
 
     build:
-        image: python:${PYTHON_VERSION}
+        # image: python:${PYTHON_VERSION}
+        image: python:3.6.5
         commands:
             - pip install --upgrade pip setuptools wheel
             - pip wheel -r requirement/dev.txt --wheel-dir=wheeldir --find-links=wheeldir
@@ -54,7 +55,7 @@ notify:
 #        when:
 #            status: success
 
-matrix:
-    PYTHON_VERSION:
-        - latest
-        - "3.6.5"
+# matrix:
+#     PYTHON_VERSION:
+#         - latest
+#         - "3.6.5"
