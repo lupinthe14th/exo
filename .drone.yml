@@ -44,6 +44,7 @@ pipeline:
 
     notify:
         irc:
+            image: plugins/irc
             prefix: build
             nick: drone
             channel: aps-mail
