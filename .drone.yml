@@ -18,7 +18,7 @@ pipeline:
             - pip install --no-index --find-links=wheeldir -r requirement/dev.txt
             - flake8 .
             - pyflakes .
-            - nosetests --with-coverage -v test/
+            - nosetests --with-coverage --cover-package=exo_app -v test/
 
     rebuild-cache:
         image: plugins/s3-cache:1
