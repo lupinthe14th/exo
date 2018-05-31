@@ -6,8 +6,7 @@ from logging import getLogger
 from exchangelib import Credentials, Account, EWSTimeZone, \
     DELEGATE, Configuration
 
-from exo_app.conf.settings import ENDPOINT, USERNAME, PASSWORD, \
-    VERIFY_SSL
+from exo_app.config import ENDPOINT, USERNAME, PASSWORD, VERIFY_SSL
 
 log = getLogger(__name__)
 tz = EWSTimeZone.localzone()
