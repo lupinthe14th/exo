@@ -9,7 +9,7 @@ from argparse import ArgumentTypeError
 import pandas as pd
 import freezegun
 
-from exo_app.utils import valid_date, next_bday
+from exo.utils import valid_date, next_bday
 
 
 class ValidDateTestCase(unittest.TestCase):
