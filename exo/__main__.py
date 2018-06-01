@@ -4,15 +4,15 @@
 from __future__ import unicode_literals
 
 from argparse import ArgumentParser
-from logging import DEBUG, INFO, basicConfig, getLogger
+from logging import DEBUG, INFO, basicConfig
 
 from exchangelib.util import PrettyXmlHandler
 
-from exo_app.core import main
-from exo_app.utils import valid_date
+from exo.core import main
+from exo.utils import valid_date
 
-if __name__ == "__main__":
-    log = getLogger(__name__)
+
+def cli():
     parser = ArgumentParser()
     parser.add_argument(
         "--date", help="Date formats. (YYYY-MM-DD)", type=valid_date)
@@ -25,5 +25,9 @@ if __name__ == "__main__":
     else:
         basicConfig(level=INFO)
     main(args.date)
+
+
+if __name__ == '__main__':
+    cli()
 
 # vim fileencoding=utf-8

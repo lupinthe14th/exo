@@ -8,8 +8,8 @@ from logging import getLogger
 import pandas as pd
 import pandas.tseries.offsets as offsets
 
-from exo_app.event import Event
-from exo_app.utils import next_bday
+from exo.event import Event
+from exo.utils import next_bday
 
 log = getLogger(__name__)
 
