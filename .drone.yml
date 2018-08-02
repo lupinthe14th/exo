@@ -42,4 +42,5 @@ pipeline:
 matrix:
     PYTHON_VERSION:
         - latest
+        - "3.6.6"
         - "3.6.5"
