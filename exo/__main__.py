@@ -8,8 +8,8 @@ from logging import DEBUG, INFO, basicConfig
 
 from exchangelib.util import PrettyXmlHandler
 
-from core import main
-from utils import valid_date
+from .core import main
+from .utils import valid_date
 
 
 def cli():
