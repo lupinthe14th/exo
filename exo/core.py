@@ -5,7 +5,6 @@ from __future__ import unicode_literals
 
 from logging import getLogger
 
-import pandas as pd
 import pandas.tseries.offsets as offsets
 
 from .event import Event
