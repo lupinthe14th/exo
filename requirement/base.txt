@@ -1,17 +1,18 @@
+-i https://pypi.org/simple/
 asn1crypto==0.24.0
 cached-property==1.4.2
 certifi==2018.4.16
 cffi==1.11.5
 chardet==3.0.4
 cryptography==2.2.2
-defusedxml==0.5.0
+defusedxml==0.6.0
 dnspython==1.15.0
-exchangelib==1.11.3
+exchangelib==1.12.5
 future==0.16.0
 idna==2.6
 isodate==0.6.0
 japandas==0.5.1
-lxml==4.2.1
+lxml==4.4.1
 ntlm-auth==1.1.0
 numpy==1.14.3
 pandas-datareader==0.7.0
@@ -26,7 +27,7 @@ requests-file==1.4.3
 requests-ftp==0.3.1
 requests-kerberos==0.12.0
 requests-ntlm==1.1.0
-requests==2.18.4
+requests==2.20.0
 six==1.11.0
 tzlocal==1.5.1
 urllib3==1.22
