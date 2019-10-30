@@ -8,4 +8,4 @@ install:
   - pipenv install --dev
 # command to run tests
 script:
-  - nosetests --with-coverage
+  - nosetests --with-coverage exo
