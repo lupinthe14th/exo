@@ -1,5 +1,6 @@
 ---
 language: python
+cache: pipenv
 python:
   - "3.6"      # current default Python on Travis CI
 # command to install dependencies
