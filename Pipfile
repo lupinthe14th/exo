@@ -32,7 +32,7 @@ tzlocal = "==1.5.1"
 "urllib3" = "==1.24.2"
 wrapt = "==1.10.11"
 Pygments = "==2.2.0"
-PyYAML = "==5.1"
+PyYAML = "==5.4"
 requests_ntlm = "==1.1.0"
 exchangelib = "*"
 
